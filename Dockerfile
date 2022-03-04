@@ -13,10 +13,12 @@ RUN yes | unminimize \
         locales \
         lsb-release \
         sudo \
+        wget \
     && locale-gen en_US.UTF-8
 
 ENV LANG=en_US.UTF-8
 
+# we need docker
 RUN curl -fsSL https://download.docker.com/linux/ubuntu/gpg | gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
 
 RUN echo \
@@ -28,6 +30,11 @@ RUN yes | unminimize \
         docker-ce \
         docker-ce-cli \
         containerd.io
+
+# we want mender artifact
+RUN wget https://downloads.mender.io/mender-artifact/3.7.0/linux/mender-artifact \
+    && chmod +x mender-artifact \
+    && mv mender-artifact /usr/bin/local
 
 ### Gitpod user ###
 # '-l': see https://docs.docker.com/develop/develop-images/dockerfile_best-practices/#user

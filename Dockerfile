@@ -34,7 +34,7 @@ RUN yes | unminimize \
 # we want mender artifact
 RUN wget https://downloads.mender.io/mender-artifact/3.7.0/linux/mender-artifact \
     && chmod +x mender-artifact \
-    && mv mender-artifact /usr/bin/local
+    && mv mender-artifact /usr/local/bin
 
 ### Gitpod user ###
 # '-l': see https://docs.docker.com/develop/develop-images/dockerfile_best-practices/#user
